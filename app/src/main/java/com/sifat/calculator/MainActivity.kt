@@ -1,10 +1,11 @@
 package com.sifat.calculator
 
 import android.os.Bundle
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sifat.calculator.databinding.ActivityMainBinding
 import net.objecthunter.exp4j.ExpressionBuilder
-import org.mozilla.javascript.Scriptable
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -14,6 +15,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.menu)
+
+        binding.navView.setNavigationItemSelectedListener { menuItem ->
+            onNavigationItemSelected(menuItem)
+            true
+        }
 
         val numberButtons = listOf(
             binding.num0, binding.num1, binding.num2,
@@ -58,6 +69,31 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
+
+
+    private fun onNavigationItemSelected(item: MenuItem) {
+        when(item.itemId){
+            R.id.home -> {
+                    Toast.makeText(this, "It's Damo", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+        binding.drawerLayout.closeDrawer(binding.navView)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                binding.drawerLayout.openDrawer(binding.navView)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
+
     fun evaluateExpression(expression: String): String {
         val expression = ExpressionBuilder(expression).build()
         val result = expression.evaluate()
@@ -68,7 +104,6 @@ class MainActivity : AppCompatActivity() {
             result.toString()
         }
     }
-
     private fun updatePlaceholder() {
         binding.placeholder.text = input
     }
