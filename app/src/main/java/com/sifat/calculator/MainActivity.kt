@@ -61,22 +61,19 @@ class MainActivity : AppCompatActivity() {
         }
         binding.actionEquals.setOnClickListener {
             try {
-                val result = evaluateExpression(input)
-                binding.answer.text = result.toString()
+                val result = evaluateExpression(input) // Call evaluateExpression here
+                binding.answer.text = result
             } catch (e: Exception) {
                 binding.answer.text = "Error"
             }
         }
+
     }
-
-
-
-
 
     private fun onNavigationItemSelected(item: MenuItem) {
         when(item.itemId){
             R.id.home -> {
-                    Toast.makeText(this, "It's Damo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "It's Damo", Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -92,18 +89,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
     fun evaluateExpression(expression: String): String {
-        val expression = ExpressionBuilder(expression).build()
-        val result = expression.evaluate()
+        // Replace ÷ with / and × with * for calculation
+        val sanitizedExpression = expression.replace("÷", "/").replace("×", "*")
+        val builtExpression = ExpressionBuilder(sanitizedExpression).build()
+        val result = builtExpression.evaluate()
 
+        // Format the result for output
         return if (result % 1 == 0.0) {
-            result.toInt().toString()
+            result.toInt().toString() // Return as integer if no decimal part exists
         } else {
-            result.toString()
+            result.toString() // Return full number with decimals
         }
     }
+
     private fun updatePlaceholder() {
         binding.placeholder.text = input
     }
