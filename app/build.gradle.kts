@@ -49,8 +49,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.androidx.core.ktx.v1101)
-    implementation("io.apisense:rhino-android:1.0")
-    implementation ("net.objecthunter:exp4j:0.4.8")
+    implementation (libs.exp4j)
 
 
 }

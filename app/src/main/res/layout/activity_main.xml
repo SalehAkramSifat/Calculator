@@ -16,6 +16,13 @@
     android:orientation="vertical"
     tools:context=".MainActivity"
     >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="#5BB8FB"
+        tools:ignore="MissingConstraints"/>
 
     <TextView
         android:id="@+id/placeholder"
@@ -24,7 +31,7 @@
         android:layout_weight="1"
         android:gravity="end"
         android:text=""
-        android:layout_marginTop="40sp"
+        android:layout_marginTop="10sp"
         android:layout_marginRight="10sp"
         android:textColor="@color/black"
         android:textSize="35sp"
@@ -51,7 +58,7 @@
         <TextView
             android:id="@+id/clear"
             style="@style/ActionButtonStyle"
-            android:text="CE" />
+            android:text="Clear" />
 
 
         <TextView
@@ -201,4 +208,4 @@
         android:layout_height="match_parent"
         app:menu="@menu/menu_bar"
         android:layout_gravity="start"/>
-    </androidx.drawerlayout.widget.DrawerLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
