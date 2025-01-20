@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updatePlaceholder() {
-        TODO("Not yet implemented")
+
     }
 
 
