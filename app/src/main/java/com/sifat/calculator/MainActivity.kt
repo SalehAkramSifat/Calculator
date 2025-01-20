@@ -65,8 +65,17 @@ class MainActivity : AppCompatActivity() {
                 updatePlaceholder()
             }
         }
+        binding.actionEquals.setOnClickListener {
+            try {
+                val result = evaluateExpression(input) // Call evaluateExpression here
+                binding.answer.text = result
+            } catch (e: Exception) {
+                binding.answer.text = "Error"
+            }
+        }
+    }
 
-
+    private fun evaluateExpression(expression: String) {
 
     }
 
