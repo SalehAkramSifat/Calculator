@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setNavigationItemSelectedListener { menuItem ->
             onNavigationItemSelected(menuItem)
             true
-
         }
 
         val numberButton = listOf(
@@ -65,6 +64,7 @@ class MainActivity : AppCompatActivity() {
                 updatePlaceholder()
             }
         }
+
         binding.actionEquals.setOnClickListener {
             try {
                 val result = evaluateExpression(input) // Call evaluateExpression here
@@ -88,9 +88,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updatePlaceholder() {
-
+        binding.placeholder.text = input
     }
-
 
     private fun onNavigationItemSelected(menuItem: MenuItem) {
         when (menuItem.itemId) {
@@ -107,7 +106,6 @@ class MainActivity : AppCompatActivity() {
                 binding.drawerLayout.openDrawer(binding.navView)
                 true
             }
-
             else -> super.onOptionsItemSelected(item)
         }
     }
