@@ -75,8 +75,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun evaluateExpression(expression: String) {
+    fun evaluateExpression(expression: String):String {
+        val sanitizedExpression = expression.replace("÷", "/").replace("×", "*")
+        val buildExpression = ExpressionBuilder(sanitizedExpression).build()
+        val result = buildExpression.evaluate()
 
+        return if (result % 1 ==0.0){
+            result.toString()
+        } else{
+            result.toString()
+        }
     }
 
     private fun updatePlaceholder() {
